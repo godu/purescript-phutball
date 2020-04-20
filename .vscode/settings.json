@@ -1,9 +1,11 @@
 {
-	"editor.insertSpaces": false,
+	"editor.formatOnSave": true,
+	"editor.insertSpaces": true,
 	"editor.tabSize": 2,
 	"editor.trimAutoWhitespace": true,
 	"files.insertFinalNewline": true,
 	"purescript.addNpmPath": true,
 	"purescript.addSpagoSources": true,
-	"purescript.buildCommand": "spago build --purs-args --json-errors",
+	"purescript.buildCommand": "npx spago build --purs-args --json-errors",
+	"purescript.pscIdeServerExe": "npx psc-ide-server",
 }
