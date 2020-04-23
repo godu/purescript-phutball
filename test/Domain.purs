@@ -4,7 +4,8 @@ import Prelude
 import Data.Map (insert, lookup, member, size)
 import Data.Maybe (Maybe)
 import Data.Tuple (Tuple(..))
-import Phutball.Domain (Action(..), Piece(..), Position, Board, applyAction, defaultBoard, foldrM)
+import Phutball.Domain (Action(..), Piece(..), Position, Board, applyAction, defaultBoard)
+import Phutball.Utils (foldrM)
 import Test.Spec (Spec, it)
 import Test.Spec.Assertions (shouldEqual, shouldSatisfy)
 

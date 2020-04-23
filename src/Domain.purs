@@ -1,7 +1,6 @@
 module Phutball.Domain where
 
 import Prelude
-import Data.Foldable (class Foldable, foldr)
 import Data.List.Lazy (List)
 import Data.Map (Map, member, insert, singleton)
 import Data.Maybe (Maybe(..))
@@ -20,20 +19,20 @@ instance showPlayer :: Show Player where
 type Position
   = Tuple Int Int
 
-top :: Int
-top = 20
+top_ :: Int
+top_ = 20
 
-bottom :: Int
-bottom = 0
+bottom_ :: Int
+bottom_ = 0
 
-left :: Int
-left = 0
+left_ :: Int
+left_ = 0
 
-right :: Int
-right = 14
+right_ :: Int
+right_ = 14
 
 isBundedPosition :: Position -> Boolean
-isBundedPosition (Tuple row column) = row > bottom && row < top && column >= left && column <= right
+isBundedPosition (Tuple row column) = row > bottom_ && row < top_ && column >= left_ && column <= right_
 
 data Piece
   = Ball
@@ -55,10 +54,10 @@ defaultBoard = singleton middlePosition Ball
   middlePosition = Tuple rowMiddle columnMiddle
 
   rowMiddle :: Int
-  rowMiddle = (top + bottom) / 2
+  rowMiddle = (top_ + bottom_) / 2
 
   columnMiddle :: Int
-  columnMiddle = (left + right) / 2
+  columnMiddle = (left_ + right_) / 2
 
 data Action
   = Add Position
@@ -72,6 +71,3 @@ applyAction (Add position) board
   | not $ member position board && isBundedPosition position = pure $ insert position Man board
 
 applyAction board _ = Nothing
-
-foldrM :: forall a b f m. Monad m => Foldable f => (a -> b -> m b) -> b -> f a -> m b
-foldrM f = foldr (flip (>>=) <<< f) <<< pure
